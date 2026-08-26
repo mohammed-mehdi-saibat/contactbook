@@ -20,6 +20,23 @@ def load_contacts(filename="contacts.txt"):
     return contacts
 
 
+# Get all contacts
+def list_contacts(contacts):
+    index = 1
+
+    for contact in contacts:
+        print(f"\033[32m======== User N{index} ========\033[0m")
+        print(f"Name: {contact['Name']}")
+        print(f"Phone Number: {contact['Phone']}")
+        print(f"Email: {contact['Email']}")
+        print()
+        index += 1
+
+    if len(contacts) == 0:
+        print("There are no contacts yet!\n")
+
+
+
 # Clear terminal 
 def clear_cli():
     os.system("cls" if platform.system() == "Windows" else "clear")
