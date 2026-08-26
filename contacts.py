@@ -1,8 +1,13 @@
 #!/usr/bin/env python3
 
-#---------Loading contacts function
+import os
+import platform
 
-filename = "contacts.txt"
+# Clear terminal 
+def clear_cli():
+    os.system("cls" if platform.system() == "Windows" else "clear")
+
+
 
 def menu():
     print("\033[36m========================================\033[0m")
