@@ -3,6 +3,7 @@
 import os
 import platform
 
+
 # Load contacts 
 def load_contacts(filename="contacts.txt"):
     keys = ['Name', 'Phone', 'Email']
@@ -36,28 +37,31 @@ def list_contacts(contacts):
         print("There are no contacts yet!\n")
 
 
-
 # Clear terminal 
 def clear_cli():
     os.system("cls" if platform.system() == "Windows" else "clear")
 
 
-
+# Display menu
 def menu():
-    print("\033[36m========================================\033[0m")
-    print("---------Contacts Manager Menu--------")
+    print("\n\033[36m========================================\033[0m")
+    print("\tContacts Manager Menu")
     print("\033[36m========================================\033[0m\n")
-    print("1. View contacts list")
+    print("1. View contacts")
     print("2. Add a contact")
-    print("3. Delete contact")
+    print("3. Delete a contact")
     print("4. Quit\n")
 
+
+# Get user choice 
 def userChoice():
     try:
         choice = int(input("You choose: "))
         return choice
     except ValueError:
-        print("\n\033[36mthe choice must me a number!\033[0m\n")
+        print("\n\033[31mThe choice must be a number!\033[0m\n")
+        return None
+
 
 def delete_index_choice():
     while True:
@@ -105,5 +109,3 @@ def delete_contact(contacts, delete_index):
 
     del contacts[delete_index - 1]
     return contacts
-
-
