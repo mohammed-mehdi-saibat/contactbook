@@ -59,8 +59,16 @@ def userChoice():
     except ValueError:
         print("\n\033[36mthe choice must me a number!\033[0m\n")
 
+# Add a contact
 def add_contact():
-    print(f"\n\033[32mSystem answer\033[0m: Adding contact function!")
+    contact_name = input("Contact name: ")
+    contact_phone = input("Contact phone: ")
+    contact_email = input("Contact email: ")
+
+    user_data = contact_name + "," + contact_phone + "," + contact_email + "\n"
+
+    with open('contacts.txt', 'a', encoding="UTF-8") as f:
+        f.write(user_data)
 
 def delete_contact():
     print("\n\033[31mSystem answer\033[0m: Deleting contact function!")
