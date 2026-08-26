@@ -70,6 +70,19 @@ def add_contact():
     with open('contacts.txt', 'a', encoding="UTF-8") as f:
         f.write(user_data)
 
+
+# Save contacts 
+def save(contacts):
+    with open("contacts.txt", 'w', encoding="UTF-8") as file:
+        for contact in contacts:
+            user_data = (
+                contact["Name"] + ","
+                + contact["Phone"] + ","
+                + contact["Email"] + "\n"
+            )
+            file.write(user_data)
+
+
 def delete_contact():
     print("\n\033[31mSystem answer\033[0m: Deleting contact function!")
 
