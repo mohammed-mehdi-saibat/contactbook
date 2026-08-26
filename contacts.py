@@ -3,6 +3,23 @@
 import os
 import platform
 
+# Load contacts 
+def load_contacts(filename="contacts.txt"):
+    keys = ['Name', 'Phone', 'Email']
+    contacts = []
+
+    with open(filename, 'a+', encoding="UTF-8") as f:
+        f.seek(0)
+
+        for line in f.readlines():
+            data = line.strip().split(",")
+
+            if len(data) == 3:
+                contacts.append(dict(zip(keys, data)))
+
+    return contacts
+
+
 # Clear terminal 
 def clear_cli():
     os.system("cls" if platform.system() == "Windows" else "clear")
@@ -30,16 +47,5 @@ def add_contact():
 
 def delete_contact():
     print("\n\033[31mSystem answer\033[0m: Deleting contact function!")
-
-def load_contacts():
-
-    contacts = []
-
-    try:
-        with open(filename, 'r', encoding="UTF-8") as f:
-            for line in f:
-                print(line) 
-    except FileNotFoundError:
-        print(f"\nThe list is still empty: {contacts}\n")
 
 
