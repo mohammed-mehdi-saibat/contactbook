@@ -1,40 +1,70 @@
 #!/usr/bin/env python3
 
-import os
+from contacts import (
+    menu,
+    load_contacts,
+    list_contacts,
+    userChoice,
+    add_contact,
+    delete_contact,
+    clear_cli,
+    save,
+    delete_index_choice,
+    delete_verification
+)
 
-from contacts import menu, load_contacts, userChoice, add_contact, delete_contact
 
 #----- Main menu
-
 def main():
-    while True:
+    contacts = load_contacts()
 
-        menu() 
+    while True:
+        menu()
+
         choice = userChoice()
 
         match choice:
             case 1:
-                load_contacts()
-            case 2:
-                add_contact()
-            case 3:
-                delete_contact()
-            case 4:
-                os.system("clear")
-                # quit("\n\033[35m========\nGood Bye!\n========\033[35m\n")
-                quit("""\n\033[35m                         
-                                                                                                ██
-             ██████    ██████    ██████   ██████      ██████   ██    ██  ███████             ██ ██ ██
-            ██        ██    ██  ██    ██  ██   ██     ██   ██   ██  ██   ██              ██  ██ ██ ██
-            ██   ███  ██    ██  ██    ██  ██   ██     ██████     ████    █████            ██ ██ ██ ██
-            ██    ██  ██    ██  ██    ██  ██   ██     ██   ██     ██     ██                ██████████
-             ██████    ██████    ██████   ██████      ██████      ██     ███████            ████████
-                                                                                             ██████ 
-                \033[0m\n""")
+                clear_cli()
+                list_contacts(contacts)
 
+            case 2:
+                clear_cli()
+                add_contact()
+                contacts = load_contacts()
+
+            case 3:
+                clear_cli()
+
+                if len(contacts) == 0:
+                    print("There are no contacts to delete!\n")
+                    continue
+
+                list_contacts(contacts)
+
+                var = delete_index_choice()
+
+                if var < 1 or var > len(contacts):
+                    print("\033[31mInvalid contact number!\033[0m\n")
+                    continue
+
+                if delete_verification() == 'y':
+                    contacts = delete_contact(contacts, var)
+                    save(contacts)
+                    print("\033[32mContact deleted successfully!\033[0m\n")
+                else:
+                    print("Deletion cancelled.\n")
+
+            case 4:
+                clear_cli()
+                print("\n\033[35m========")
+                print("Good Bye!")
+                print("========\033[0m\n")
+                break
+
+            case _:
+                print("\033[31mPlease choose a number between 1 and 4.\033[0m\n")
 
 
 if __name__ == "__main__":
     main()
-
-
