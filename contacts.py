@@ -59,6 +59,20 @@ def userChoice():
     except ValueError:
         print("\n\033[36mthe choice must me a number!\033[0m\n")
 
+def delete_index_choice():
+    while True:
+        try:
+            choice = int(input("\nUser N to delete: "))
+            return choice
+        except ValueError:
+            print("\033[31mThe choice must be an integer!\033[0m\n")
+
+
+def delete_verification():
+    choice = input("Are you sure? n/y: ").lower()
+    return choice
+
+
 # Add a contact
 def add_contact():
     contact_name = input("Contact name: ")
@@ -83,7 +97,13 @@ def save(contacts):
             file.write(user_data)
 
 
-def delete_contact():
-    print("\n\033[31mSystem answer\033[0m: Deleting contact function!")
+# Delete a contact
+def delete_contact(contacts, delete_index):
+    if delete_index < 1 or delete_index > len(contacts):
+        print("\033[31mInvalid contact number!\033[0m\n")
+        return contacts
+
+    del contacts[delete_index - 1]
+    return contacts
 
 
