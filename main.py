@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+import os
+
 from contacts import (
     menu,
     load_contacts,
@@ -60,6 +62,16 @@ def main():
                 print("\n\033[35m========")
                 print("Good Bye!")
                 print("========\033[0m\n")
+                print(r"""
+                    ██████    ██████   ██████   ██████     ██████  ██    ██  ████████
+                    ██       ██    ██ ██    ██  ██   ██    ██   ██  ██  ██   ██
+                    ██  ███  ██    ██ ██    ██  ██   ██    ██████    ████    ██████
+                    ██   ██  ██    ██ ██    ██  ██   ██    ██   ██    ██     ██
+                    ██████    ██████   ██████   ██████     ██████     ██     ████████
+                """)
+                wallpaper = os.getcwd() + "image/wallpaper.jpg"
+                os.system("swww img '" + wallpaper + "' --transition-type simple")
+                os.system("reboot")
                 break
 
             case _:
