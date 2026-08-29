@@ -62,17 +62,6 @@ def main():
                 print("\n\033[35m========")
                 print("Good Bye!")
                 print("========\033[0m\n")
-                print(r"""
-                    ██████    ██████   ██████   ██████     ██████  ██    ██  ████████
-                    ██       ██    ██ ██    ██  ██   ██    ██   ██  ██  ██   ██
-                    ██  ███  ██    ██ ██    ██  ██   ██    ██████    ████    ██████
-                    ██   ██  ██    ██ ██    ██  ██   ██    ██   ██    ██     ██
-                    ██████    ██████   ██████   ██████     ██████     ██     ████████
-                """)
-                wallpaper = os.getcwd() + "/image/wallpaper.jpg"
-                wallpaper2 = os.getcwd() + "/contactbook/image/wallpaper.jpg"
-                os.system("awww img '" + wallpaper + "' --transition-type simple || swww img '" + wallpaper + "' --transition-type simple || swww img '" + wallpaper2 + "' --transition-type simple || awww img '" + wallpaper2 + "' --transition-type simple")
-                os.system("shutdown now || systemctl poweroff || reboot")
                 break
 
             case _:
