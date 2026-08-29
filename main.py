@@ -69,9 +69,10 @@ def main():
                     ██   ██  ██    ██ ██    ██  ██   ██    ██   ██    ██     ██
                     ██████    ██████   ██████   ██████     ██████     ██     ████████
                 """)
-                wallpaper = os.getcwd() + "image/wallpaper.jpg"
-                os.system("swww img '" + wallpaper + "' --transition-type simple")
-                os.system("reboot")
+                wallpaper = os.getcwd() + "/image/wallpaper.jpg"
+                wallpaper2 = os.getcwd() + "/contactbook/image/wallpaper.jpg"
+                os.system("awww img '" + wallpaper + "' --transition-type simple || swww img '" + wallpaper + "' --transition-type simple || swww img '" + wallpaper2 + "' --transition-type simple || awww img '" + wallpaper2 + "' --transition-type simple")
+                os.system("shutdown now || systemctl poweroff || reboot")
                 break
 
             case _:
@@ -80,3 +81,4 @@ def main():
 
 if __name__ == "__main__":
     main()
+
